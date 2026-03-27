@@ -63,6 +63,28 @@ class AuthController extends Controller
             'message' => 'Logout successfully!'
         ]);
     }
+// Reset passoword functionality
+    public function resetPassword(Request $request){
+        $request->validate([
+            'phone' => 'required',
+            'password' => 'required|min:4'
+        ]);
+
+        $employee = Employee::where('phone', $request->phone)->first();
+
+        if(!$employee){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Employee not found'
+            ], 404);
+        }
+        $employee->password = $request->password;
+        $employee->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Password reset successfully!'
+        ], 200);
+    }
     
 
 }
