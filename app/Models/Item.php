@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Item extends Model
+{
+    use HasFactory;
+    
+    protected $fillable = [
+        'name','item_type', 'IsconsultationItem', 
+        'is_stock_item', 'status'
+    ];
+
+    public function item_prices(){
+        return $this->hasMany(Item_price::class);
+    }
+}   

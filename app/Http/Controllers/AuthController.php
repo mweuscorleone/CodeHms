@@ -56,13 +56,31 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        $request->user()->currentAccessToken()->delete();
 
-        return response()->json([
+        if(!$request->bearerToken()){
+            return response()->json(['message' => 'No token provided in header'], 400);
+        }
+        $user = $request->user();
+
+        if($user){
+            $user->currentAccessToken()->delete();
+
+            return response()->json([
             'status' => 'success',
             'message' => 'Logout successfully!'
-        ]);
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Unable to authenticate user for logout'
+        ], 401);
+
     }
+       
+
+        
+    
 // Reset passoword functionality
     public function resetPassword(Request $request){
         $request->validate([

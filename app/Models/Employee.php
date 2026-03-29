@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 
-class Employee extends Model
+class Employee extends Authenticable
 {  use HasFactory;
     use HasApiTokens;
     protected $fillable = ['first_name', 'middle_name', 'last_name', 'username', 'phone', 'title', 'password'];
@@ -16,9 +17,12 @@ class Employee extends Model
         'password',
         'remember_token',
     ];
-    // protected function casts():array{
-    //     return[
-    //         'password' => 'hashed',
-    //     ];
-    // }
+    protected function casts():array{
+        return[
+            'password' => 'hashed',
+        ];
+    }
+    public function checkin(){
+        return $this->hasMany(CheckIn::class);
+    }
 }
