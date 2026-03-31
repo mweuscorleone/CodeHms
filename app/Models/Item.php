@@ -17,4 +17,11 @@ class Item extends Model
     public function item_prices(){
         return $this->hasMany(Item_price::class);
     }
+    public function service_requests(){
+        return $this->hasMany(ServiceRequest::class);
+    }
+    public function payments(){
+        return $this->hasMany(Payment::class);
+    }
+    
 }   

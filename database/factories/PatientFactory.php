@@ -21,14 +21,17 @@ class PatientFactory extends Factory
             'first_name' => fake()->firstName(),
             'middle_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
+            'date_of_birth' => fake()->date(),
             'gender' => fake()->randomElement(['male', 'female']),
+            'sponsor_id' => fake()->randomElement([1, 2, 3]),
             'phone' => fake()->phoneNumber(),
             'address' => fake()->streetAddress(),
             'relative_name' => fake()->name(),
             'relative_phone' => fake()->phoneNumber(),
             'relationship' => fake()->randomElement(['father', 'brother', 'mother', 'sisiter', 'wife', 'husband', 'neighbour','other']),
             'relative_address' => fake()->streetAddress(),
-            'sponsor_id' => fake()->randomElement([1, 2, 3])
+            'created_by' => fake()->randomNumber(1, 2)
+           
         ];
     }
 }

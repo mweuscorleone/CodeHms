@@ -25,4 +25,14 @@ class Employee extends Authenticable
     public function checkin(){
         return $this->hasMany(CheckIn::class);
     }
+    public function service_requests(){
+        return $this->hasMany(ServiceRequest::class);
+    }
+    public function payments(){
+        return $this->hasMany(Payment::class);
+    }
+    public function patients(){
+        return $this->hasMany(Patient::class);
+        
+    }
 }

@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
-            $table->enum('gender', ['male', 'female']);
+            $table->date('date_of_birth');
+             $table->enum('gender', ['male', 'female']);
+
+            //payment details
+            $table->foreignId('sponsor_id')->constrained()->cascadeOnDelete();
             $table->string('phone');
             $table->string('address');
 
@@ -26,9 +30,13 @@ return new class extends Migration
             $table->string('relative_phone');
             $table->enum('relationship', ['father', 'brother', 'mother', 'sisiter', 'wife', 'husband', 'neighbour','other']);
             $table->string('relative_address');
+            $table->foreignId('created_by')->constrained('employees')->cascadeOnDelete();
+        
 
-            //payment details
-            $table->foreignId('sponsor_id')->constrained()->cascadeOnDelete();
+            
+
+        
+            
             $table->timestamps();
         });
     }

@@ -18,4 +18,7 @@ class Visit extends Model
     public function checkin(){
         return $this->hasMany(CheckIn::class);
     }
+    public function clinicalNotes(){
+        return $this->hasMany(ClinicalNote::class);
+    }
 }
