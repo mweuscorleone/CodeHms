@@ -10,7 +10,7 @@ class CheckIn extends Model
     use HasFactory;
 
     protected $fillable = [
-        'patient_id', 'visit_date', 'Employee_Id', 'vistType', 'check_in_datetime'
+        'patient_id', 'visit_date', 'employee_id', 'visit_type_id', 'check_in_datetime'
     ];
 
     public function patient(){
@@ -21,5 +21,8 @@ class CheckIn extends Model
     }
     public function visits(){
         return $this->belongsTo(Visit::class);
+    }
+    public function receptionBillings(){
+        return $this->hasMany(ReceptionBilling::class);
     }
 }

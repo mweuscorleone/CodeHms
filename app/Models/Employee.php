@@ -35,4 +35,7 @@ class Employee extends Authenticable
         return $this->hasMany(Patient::class);
         
     }
+    public function reception_billings(){
+        return $this->hasMany(ReceptionBilling::class);
+    }
 }

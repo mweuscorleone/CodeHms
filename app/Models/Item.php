@@ -23,5 +23,7 @@ class Item extends Model
     public function payments(){
         return $this->hasMany(Payment::class);
     }
-    
+    public function reception_billings(){
+        return $this->hasMany(ReceptionBilling::class);
+    }
 }   

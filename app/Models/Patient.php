@@ -37,5 +37,8 @@ class Patient extends Model
     public function employees(){
         return $this->belongsTo(Employee::class);
     }
+    public function receptionBillings(){
+        return $this->hasMany(ReceptionBilling::class);
+    }
     
 }

@@ -17,3 +17,4 @@ Route::middleware('auth:sanctum')->group(function(){
 });
 Route::post('/password-reset', [AuthController::class, 'resetPassword']);
 Route::post('/register-patient', [PatientController::class, 'store']);
+Route::post('/patient-checkin', [PatientController::class, 'checkin']);

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Patient;
+use App\Models\CheckIn;
 
 class PatientController extends Controller
 {
@@ -30,12 +31,33 @@ class PatientController extends Controller
 
         $patient = Patient::create($data);
 
-        $employeeName = Auth::user() ? : Auth::user()->name = "system admin";
+        $employeeName = Auth::user() ? Auth::user()->name :   "system admin";
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Patient registered by' . $employeeName,
+            'message' => 'Patient registered by ' . $employeeName,
             'patient' => $patient
         ], 201);
-    }   
+    }
+
+    //patient checkin
+
+    public function checkin(Request $request){
+        //validate
+
+        $data = $request->validate([
+            'patient_id' => 'required|integer',
+            'visit_date' => 'required|date',
+            'employee_id' => 'required|integer',
+            'visit_type_id' => 'required|integer'
+        ]);
+
+        $checkinDetail = CheckIn::create($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'patient checked in successfully!',
+            'check in details' => $checkinDetail
+        ]);
+    }
 }
