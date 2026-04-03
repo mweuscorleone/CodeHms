@@ -20,7 +20,9 @@ class Item_priceFactory extends Factory
         return [
             'item_id' => fake()->numberBetween(1, 205),
             'sponsor_id' => fake()->numberBetween(1, 3),
-            'price' => fake()->numberBetween(10, 20000)
+            'price' => fake()->numberBetween(10, 20000),
+            'employee_id' => fake()->numberBetween(1, 20)
+
         ];
     }
 }

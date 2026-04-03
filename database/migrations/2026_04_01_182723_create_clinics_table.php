@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('clinic_name');
             $table->string('clinic_nature');
-            $table->enum('status', ['active', 'not active']);
+            $table->enum('status', ['active', 'not active'])->default('active');
             $table->timestamps();
         });
     }

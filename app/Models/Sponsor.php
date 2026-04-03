@@ -12,9 +12,9 @@ class Sponsor extends Model
          'sponsor_name', 'sponsor_type', 'status'
     ];
     public function item_prices(){
-        return $this->belongsTo(Item_price::class);
+        return $this->hasMany(Item_price::class);
     }
     public function patient(){
-        return $this->belongsTo(Patient::class);
+        return $this->hasMany(Patient::class);
     }
 }

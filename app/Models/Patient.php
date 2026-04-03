@@ -22,7 +22,7 @@ class Patient extends Model
         return $this->hasMany(Visit::class);
     }
     public function sponsor(){
-        return $this->hasMany(Sponsor::class);
+        return $this->belongsTo(Sponsor::class, 'sponsor_id');
     }
     public function checkIn(){
         return $this->hasMany(CheckIn::class);
@@ -34,8 +34,8 @@ class Patient extends Model
     public function payments(){
         return $this->hasMany(Payment::class);
     }
-    public function employees(){
-        return $this->belongsTo(Employee::class);
+    public function employee(){
+        return $this->belongsTo(Employee::class, 'created_by');
     }
     public function receptionBillings(){
         return $this->hasMany(ReceptionBilling::class);

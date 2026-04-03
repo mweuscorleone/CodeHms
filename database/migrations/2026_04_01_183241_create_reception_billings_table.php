@@ -17,10 +17,11 @@ return new class extends Migration
             $table->enum('billing_type', ['cash', 'credit']);
             $table->foreignId('sponsor_id')->constrained('sponsors')->cascadeOnDelete();
             $table->foreignId('clinic_id')->constrained('clinics')->cascadeOnDelete();
-            $table->foreignId('check_in_id')->constrained('checkins')->cascadeOnDelete();
+            $table->foreignId('check_in_id')->constrained('check_ins')->cascadeOnDelete();
             $table->foreignId('item_id')->constrained('items')->cascadeOnDelete();
             $table->decimal('amount', 10, 2);
             $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
+            
             
 
             $table->timestamps();

@@ -8,7 +8,7 @@ class ReceptionBilling extends Model
 {
     protected $fillable = [
         'patient_id', 'billing_type', 'sponsor_id', 'clinic_id',
-        'check_in_id', 'item_it', 'amount', 'employee_id'
+        'check_in_id', 'item_id', 'amount', 'employee_id'
     ];
 
     public function patients(){

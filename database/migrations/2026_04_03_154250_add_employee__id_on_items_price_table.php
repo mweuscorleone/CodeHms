@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_prices', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('sponsor_id')->constrained()->cascadeOnDelete();
-            $table->decimal('price', 10, 2);
+        Schema::table('item_prices', function (Blueprint $table) {
             $table->foreignId('employee_id')->constrained()->cascadeOnDelete();
-            $table->timestamps();
         });
     }
 
@@ -26,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item_prices');
+        Schema::table('item_prices', function (Blueprint $table) {
+            $table->dropForeign(['employee_id']);
+            $table->dropColumn('employee_id');
+        });
     }
 };
