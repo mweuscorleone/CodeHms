@@ -26,3 +26,4 @@ Route::post('/reception/bills', [receptionBillController::class, 'bills']);
 Route::get('/reports/patient/registration', [PatientRegistrationReportController::class, 'registrationReport']);
 Route::get('/items', [ItemsController::class, 'itemlist']);
 Route::get('/items/pricelist', [ItempriceListController::class, 'pricelist']);
+Route::get('/patient/billing/report', [receptionBillController::class, 'patientsentToDoctorReport']);

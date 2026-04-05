@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ReceptionBilling extends Model
-{
+{   use hasFactory;
+    
     protected $fillable = [
         'patient_id', 'billing_type', 'sponsor_id', 'clinic_id',
         'check_in_id', 'item_id', 'amount', 'employee_id'

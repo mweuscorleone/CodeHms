@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 class ItempriceListController extends Controller
 {
     public function pricelist(){
+
+        
         $items = DB::table('item_prices')->join('items', 'item_prices.item_id', '=' ,'items.id')
         ->join('sponsors', 'item_prices.sponsor_id','=','sponsors.id')->leftJoin('employees', 'item_prices.employee_id', '=', 'employees.id')
         ->select(
@@ -27,10 +29,11 @@ class ItempriceListController extends Controller
             'item_prices.updated_at as updated_at'
         )->get();
 
-        $report = $items->map(function ($item){
+        //Transormation
+       $report =  $items->map(function($item){
             $employeeFullName = $item->first_name ? 
-                trim($item->first_name . ' '. $item->middle_name . ' ' . 
-                $item->last_name) : 'NA';
+            trim($item->first_name . ' '. $item->middle_name . ' ' . 
+            $item->last_name) : 'NA';
 
                 return [
                     'Item ID' => $item->item_id,
