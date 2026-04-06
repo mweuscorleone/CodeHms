@@ -27,3 +27,5 @@ Route::get('/reports/patient/registration', [PatientRegistrationReportController
 Route::get('/items', [ItemsController::class, 'itemlist']);
 Route::get('/items/pricelist', [ItempriceListController::class, 'pricelist']);
 Route::get('/patient/billing/report', [receptionBillController::class, 'patientsentToDoctorReport']);
+Route::put('/edit/patient/details/{id}', [PatientController::class, 'update']);
+Route::delete('/delete/patient/{id}', [PatientController::class, 'destroy']);
